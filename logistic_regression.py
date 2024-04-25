@@ -6,33 +6,33 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, confusion_matrix
 
 def read_and_train(csv_file, output_file):
-    # 读取CSV文件
+    # Read the CSV file
     data = pd.read_csv(csv_file)
 
-    # 确认数据
+    # Inspect the data
     print(data.head())
 
-    # 定义特征和目标变量
-    X = data.drop(['sample','MSM'], axis=1) # 特征
-    y = data['MSM'] # 目标变量
+    # Define features and target variable
+    X = data.drop(['sample','MSM'], axis=1) # Features
+    y = data['MSM'] # Target variable
 
-    # 划分数据集为训练集和测试集
+    # Split the dataset into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    # 初始化逻辑回归模型
+    # Initialize the logistic regression model
     model = LogisticRegression()
 
-    # 训练模型
+    # Train the model
     model.fit(X_train, y_train)
 
-    # 在测试集上进行预测
+    # Make predictions on the testing set
     y_pred = model.predict(X_test)
 
-    # 计算准确率
+    # Calculate accuracy
     accuracy = accuracy_score(y_test, y_pred)
     print("Accuracy:", accuracy)
 
-    # 绘制混淆矩阵
+    # Plot the confusion matrix
     conf_matrix = confusion_matrix(y_test, y_pred)
     plt.figure(figsize=(8, 6))
     sns.heatmap(conf_matrix, annot=True, fmt="d", cmap="Blues", cbar=False)
@@ -41,19 +41,19 @@ def read_and_train(csv_file, output_file):
     plt.ylabel("True Label")
     plt.show()
 
-    # 将准确率写入到指定文件中
+    # Write the accuracy to the specified file
     with open(output_file, 'a') as f:
         f.write(f"Accuracy: {accuracy}\n")
 
-# 让用户选择读取单个文件还是多个文件
+# Let the user choose to read a single file or multiple files
 choice = input("Enter '1' to read a single file, '2' to read multiple files: ")
 
 if choice == '1':
-    csv_file = input("Please enter the location and name of the csv file: ")
+    csv_file = input("Please enter the location and name of the CSV file: ")
     output_file = input("Please enter the location and name of the output file: ")
     read_and_train(csv_file, output_file)
 elif choice == '2':
-    csv_file = input("Please enter the location and Prefix (without '_number') of the csv file: ")
+    csv_file = input("Please enter the location and Prefix (without '_number') of the CSV file: ")
     output_file = input("Please enter the location and name of the output file: ")
     for i in range(10):
         read_and_train(f'{csv_file}_{i}.csv', output_file)
