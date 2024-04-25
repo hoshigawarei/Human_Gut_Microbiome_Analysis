@@ -19,6 +19,7 @@ Libraries required to run `class.py` and `query.py`: pandas
 
 ```
 pip install pandas
+pip install openpyxl
 ```
 Libraries required to run `draw.py`: openpyxl, numpy, matplotlib
 
@@ -63,7 +64,7 @@ pip install keras
 
 ```
 python query.py
-path_to_excel_file.xlsx   // data.xlsx
+path_to_excel_file.xlsx   // input\data.xlsx
 line_number   //12  
 line_number   //34 
 ...
@@ -84,9 +85,9 @@ Replace `path_to_excel_file.xlsx `with the actual path to your Excel file and`li
 
 ```
 python classify.py
-path_to_excel_file.xlsx   //data.xlsx 
-path_to_classification_guidelines.txt   //MSM_batch1.txt 
-path_to_save_new_excel_file.xlsx  //MSM_b1.xlsx 
+path_to_excel_file.xlsx   //input\data.xlsx 
+path_to_classification_guidelines.txt   //input\MSM_batch1.txt 
+path_to_save_new_excel_file.xlsx  //output\MSM_batch1.xlsx 
 ```
 
 Replace `path_to_excel_file.xlsx` with the actual path to your Excel file, `path_to_classification_guidelines.txt` with the path to the .txt file containing classification guidelines, and `path_to_save_new_excel_file.xlsx` with the desired path to save the new Excel file.
@@ -101,7 +102,8 @@ Replace `path_to_excel_file.xlsx` with the actual path to your Excel file, `path
 **Usage Example (Using `MSM_b1` from the project directory)**:
 ```
 python draw.py
-path_to_excel_file.xlsx    //MSM_b1.xlsx
+path_to_excel_file.xlsx    //input\MSM_batch1.xlsx
+path_to_saved_txt_file.txt    //output\detailed_information.txt
 ```
 
 Or:
@@ -111,7 +113,7 @@ python draw.py
 AM
 ```
 
-Replace `path_to_excel_file.xlsx` with the actual path to your Excel file.
+Replace `path_to_excel_file.xlsx` with the actual path to your Excel file.Then, replace `path_to_saved_txt_file.txt` with the actual path that you want to save the detailed information.
 
 
 **Explanation of Output:**
@@ -149,12 +151,15 @@ Run `random_select.py` to randomly select n rows within the specified range and 
 
 ```
 py random_select.py
-path_to_csv_file.csv     //all.csv 
+path_to_csv_file.csv     //input\all.csv 
 2   //The starting number of rows for the x th group of people to filter
 159   //The ending number of rows for the x th group of people to filter
 31   //The number n of rows to be filtered out for the x th category of people
+160   //The starting number of rows for the x th group of people to filter
+191   //The ending number of rows for the x th group of people to filter
+31   //The number n of rows to be filtered out for the x th category of people
 -1    //Enter -1 to stop
-path_to_saved_sub-csv_file.csv   //test_all  
+path_to_saved_sub-csv_file.csv   //output\t_all  
 ```
 Replace `path_to_csv_file.csv` with the actual path to your CSV file, and replace `path_to_saved_sub-csv_file.csv` with the actual path you want to save your ten sub-CSV file.
 #### (1) Logistic Regression
@@ -171,8 +176,8 @@ Using the model `LogisticRegression()` for classification through reinforcement 
 ```
 python logistic_regression.py
 1   //mode
-path_to_csv_file.csv    //all.csv  
-path_to_save_accuracy_file    //a1
+path_to_csv_file.csv    //input\all.csv  
+path_to_save_accuracy_file    //output\a1
 ```
 Replace `path_to_csv_file.csv` with the actual path to your CSV file, and replace `path_to_save_accuracy_file` with the actual path of the file you want to save your accuracy data.
 
@@ -180,8 +185,8 @@ Replace `path_to_csv_file.csv` with the actual path to your CSV file, and replac
 ```
 python logistic_regression.py
 2    //mode
-path_to_csv_file.csv     //t_all    //输入文件地址和不含'_数字'的前缀
-path_to_save_accuracy_file    //a2
+path_to_csv_file.csv     //input\t_all    //输入文件地址和不含'_数字'的前缀
+path_to_save_accuracy_file    //output\a2
 ```
 Replace `path_to_csv_file.csv` with the actual path to your CSV file and prefix without '_number', and replace `path_to_save_accuracy_file` with the actual path of the file you want to save your accuracy data.
 
