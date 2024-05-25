@@ -185,7 +185,7 @@ Replace `path_to_csv_file.csv` with the actual path to your CSV file, and replac
 ```
 python logistic_regression.py
 2    //mode
-path_to_csv_file.csv     //input\t_all    //输入文件地址和不含'_数字'的前缀
+path_to_csv_file.csv     //input\t_all    //Input the file path and the prefix without '_number'.
 path_to_save_accuracy_file    //output\a2
 ```
 Replace `path_to_csv_file.csv` with the actual path to your CSV file and prefix without '_number', and replace `path_to_save_accuracy_file` with the actual path of the file you want to save your accuracy data.
